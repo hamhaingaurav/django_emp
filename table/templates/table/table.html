@@ -16,20 +16,21 @@
   <td>
 <a class="btn btn-primary mb-2 ml-3" href="{% url 'home' %}" role="button">Home</a>
 </td>
+
+<td>
+  <a class="btn btn-outline-primary mb-2 ml-3" href="{% url 'download_data' %}" role="button">Download Data</a>
+</td>
+
+
 <td>
 <form method="GET" action="">
 <div class="input-group mb-2 ml-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
-  </div>
-  <input type="text" name="q" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ request.GET.q }}">
+  <input type="text" placeholder="Search" name="q" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ request.GET.q }}">
   <input type="submit" name="Search" class="form-control">
 </div>
 </form>
 </td>
-<td>
-  <a class="btn btn-outline-primary mb-2 ml-4" href="{% url 'download_data' %}" role="button">Download Data</a>
-</td>
+
 </tr>
 
 </table>
@@ -71,7 +72,7 @@
 
 <div class="p-2">
   <span class="d-block p-2 bg-primary text-white">
-  Showing {{ table_data.number }} of {{ table_data.paginator.num_pages }} pages. (Each page have 20 rows out of {{ table_data.paginator.count }} rows)
+  Showing page no. {{ table_data.number }} of {{ table_data.paginator.num_pages }} pages. ( Each page is showing 20 rows out of {{ table_data.paginator.count }} total rows )
 </span>
 </div>
 
@@ -93,6 +94,13 @@
         <a class="page-link" href="">&lArr; Previous</a>
       </li>
     {% endif %}
+    <li>
+      <form method="GET" action="">
+        <div class="input-group">
+          <input type="text" placeholder="Go to Page" name="page" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ request.GET.paginatore }}">
+        </div>
+      </form>
+    </li>
     {% if table_data.has_next %}
     <li class="page-item">
       <a class="page-link" href="?page={{ table_data.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next &rArr;</a>
