@@ -1,1 +1,5 @@
+/emp_app/settings.py
+/emp_app/__pycache__/
+/table/migrations/
+/table/__pycache__/
 db.sqlite3
