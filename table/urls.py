@@ -1,7 +1,10 @@
 from django.urls import path
-from . import views
+from table.views import *
 
 urlpatterns = [
-    path('', views.home,name='home'),
-    path('download_data/',views.download_data,name='download_data')
+    path('', home, name='home'),
+    path('table/', table, name='table'),
+    path('datatable/', datatable, name='datatable'),
+    path('django-table/', DjangoTableView.as_view(), name='django_table'),
+    path('download_data/', download_data, name='download_data')
 ]
